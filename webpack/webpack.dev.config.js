@@ -12,6 +12,5 @@ module.exports = merge(base, {
       poll: true,
     },
   },
-  watch: true,
   devtool: 'source-map',
 });

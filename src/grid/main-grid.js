@@ -24,7 +24,6 @@ export class MainGrid extends PixiGrid {
   _createPage(page){
     this.createLogo(page[0]);
     this.createFurniture(page);
-    this.createBg(page[0])
 
   }
 
@@ -58,10 +57,7 @@ export class MainGrid extends PixiGrid {
     this.setChild(`description${[i]}`,description)
   }
 
-  createBg(page){
-const gr= new PIXI.Graphics()
-gr.drawRect(0,0,)
-  }
+ 
 
 
  

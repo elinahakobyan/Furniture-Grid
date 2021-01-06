@@ -7,9 +7,9 @@ function LP(l, p) {
 export function mainGridConfig() {
   return LP(
     {
-      // debug: {
-      //   color: 0xff0000,
-      // },
+      debug: {
+        color: 0xff0000,
+      },
       name: 'page1',
       bounds: { x: 0, y: 0, width: window.innerWidth, height: window.innerHeight },
       cells: [
@@ -43,7 +43,7 @@ export function mainGridConfig() {
           bounds:{x:0.68,y:0.81,width:0.18,height:0.04}
         },
         {
-          name:'',
+          name:'bg',
           bounds:{x:0,y:0.87,width:1,height:0.13}
         }
         

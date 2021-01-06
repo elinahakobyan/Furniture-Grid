@@ -35,7 +35,7 @@ export class Game extends PIXI.Application {
       .add('table2', 'assets/furniture/table2.png')
       .add('table1k', 'assets/furniture/table1k.png')
       .add('font', 'assets/font/kenvector_future.ttf')
-      .add('nkar', 'assets/ui/nkar.png')
+      .add('bg', 'assets/ui/nkar.png')
       .add('red', 'assets/ui/button.png')
       .add('blue', 'assets/ui/bluebutton.png');
     this.loader.load(() => {

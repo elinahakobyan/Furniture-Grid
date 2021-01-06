@@ -13,6 +13,6 @@
         header:'Worlds Away ',
         description:'Jenny S'
     }
-],
+]
 
  ]
