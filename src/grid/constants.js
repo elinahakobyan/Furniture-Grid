@@ -13,6 +13,11 @@
         header:'Worlds Away ',
         description:'Jenny S'
     }
+    // {
+    //     name:'bg',
+    //     header:'Tap on the piece you love !',
+    //     description:null
+    // }
 ]
 
  ]

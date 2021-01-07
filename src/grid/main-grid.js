@@ -24,12 +24,14 @@ export class MainGrid extends PixiGrid {
   _createPage(page){
     this.createLogo(page[0]);
     this.createFurniture(page);
-
+     this.createBg()
   }
 
   createLogo(logo){
     
     const sprite = PIXI.Sprite.from(logo.name);
+    // sprite.anchor.set(0.5)
+    console.warn(sprite.position);
     this.setChild(logo.name ,sprite)
   }
 
@@ -38,7 +40,7 @@ export class MainGrid extends PixiGrid {
 
       const sprite = PIXI.Sprite.from(page[i].name);
       this.setChild(page[i].name ,sprite)
-
+        
       this.createText(page[i],i)
     }
       
@@ -55,6 +57,20 @@ export class MainGrid extends PixiGrid {
 
     const description= new PIXI.Text(page.description,style)
     this.setChild(`description${[i]}`,description)
+  }
+
+  createBg(){
+    const sprite=new PIXI.Sprite.from('bg')
+    this.setChild('bg',sprite)
+    
+    const style = new PIXI.TextStyle();
+    style.fontFamily='Arial'
+    style.fontSize = 43;
+    style.fill = '#ffffff';
+
+    const text =new PIXI.Text('Tap on the piece you love !',style)
+    // console.warn(this);
+    this.setChild('text',text)
   }
 
  
