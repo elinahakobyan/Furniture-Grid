@@ -1,7 +1,6 @@
 import { CellAlign, CellScale, PixiGrid } from '@armathai/pixi-grid';
-import { mainGridConfig } from './main-grid-config';
+import { mainGridConfig,LP } from './main-grid-config';
 import {pages}from './constants.js'
-
 export class MainGrid extends PixiGrid {
   getGridConfig() {
     return mainGridConfig()
@@ -25,6 +24,7 @@ export class MainGrid extends PixiGrid {
     this.createLogo(page[0]);
     this.createFurniture(page);
      this.createBg()
+    //  this.createHand()
   }
 
   createLogo(logo){
@@ -73,7 +73,16 @@ export class MainGrid extends PixiGrid {
     this.setChild('text',text)
   }
 
- 
+ createHand(){
+  const hand = new PIXI.Sprite.from('hand');
+  if (this.LP(l,p) === l) {
+    hand.position.set(window.innerWidth * 0.225, window.innerHeight);
+  } else {
+    hand.position.set(window.innerWidth / 2, window.innerHeight);
+  }
+  this.stage.addChild((this.hand = hand));
+  // this.handAnimation(hand);
+ }
 
 
  
