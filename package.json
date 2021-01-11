@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@armathai/pixi-grid": "^3.0.5",
+    "gsap": "^3.5.1",
     "pixi.js": "^5.3.3"
   }
 }

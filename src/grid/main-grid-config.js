@@ -38,7 +38,7 @@ export function mainGridConfig() {
         },
         {
           name:'header2',
-          bounds:{x:0.68,y:0.75,width:0.18,height:0.05}
+          bounds:{x:0.68,y:0.75,width:0.18,height:0.04}
         },
         {
           name:'description2',

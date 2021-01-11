@@ -1,5 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { MainGrid } from './grid/main-grid';
+// import { gsap, Bounce } from 'gsap';
+// import { PixiPlugin } from 'gsap/PixiPlugin';
 
 export class Game extends PIXI.Application {
   constructor() {
@@ -11,6 +13,8 @@ export class Game extends PIXI.Application {
     window.addEventListener('resize', this._resize.bind(this));
 
     document.body.appendChild(this.view);
+    // gsap.registerPlugin(PixiPlugin);
+    // PixiPlugin.registerPIXI(PIXI);
     this._loadAssets();
   }
 
