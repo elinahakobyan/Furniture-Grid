@@ -1,5 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { MainGrid } from './grid/main-grid';
+import { LastPageGrid } from './grid/last-page-grid';
+
 // import { gsap, Bounce } from 'gsap';
 // import { PixiPlugin } from 'gsap/PixiPlugin';
 
@@ -24,10 +26,10 @@ export class Game extends PIXI.Application {
   }
 
   _loadAssets() {
-    this.loader.add('burgundyDivan', 'assets/ui/burgundyDivan.png')
-      .add('grayDivan', 'assets/ui/grayDivan.png')
-      .add('orangeDivan', 'assets/ui/orangeDivan.png')
-      .add('torquoiseDivan', 'assets/ui/torquoiseDivan.png')
+    this.loader.add('d1', 'assets/ui/d1.png')
+      .add('d2', 'assets/ui/d2.png')
+      .add('d3', 'assets/ui/d3.png')
+      .add('d4', 'assets/ui/d4.png')
       .add('hand', 'assets/ui/hand.png')
       .add('like', 'assets/ui/icon_like.png')
       .add('logo', 'assets/ui/logo.png')
