@@ -13,6 +13,7 @@ export class MainGrid extends PixiGrid {
     gsap.registerPlugin(PixiPlugin);
     PixiPlugin.registerPIXI(PIXI);
     this.smthisdoing = false;
+    this.pagesCount=0;
     this._build();
   }
 
@@ -21,31 +22,32 @@ export class MainGrid extends PixiGrid {
   }
 
   _build() {
-   this._createPage(pages[0])
+   this._createPage(pages[this.pagesCount])
   }
   
   _createPage(page){
     this.createLogo(page[0]);
     this.createFurniture(page);
-     this.createBg()
-     this.createHand()
+    this.createBg()
+    this.createHand()
+  
   }
 
   createLogo(logo){
 
     const sprite = PIXI.Sprite.from(logo.name);
     // sprite.anchor.set(0.5)
-    console.warn(sprite.position);
+    // console.warn(sprite.position);
     this.setChild(logo.name ,sprite)
   }
 
   createFurniture(page){
     for(let i=1;i<page.length;i++){
-
       const sprite = PIXI.Sprite.from(page[i].name);
+      sprite.name=`table${i}`
       sprite.interactive = true;
       sprite.on('pointerdown',this.onClick.bind(this,sprite))
-      this.setChild(page[i].name ,sprite)
+      this.setChild(`table${i}` ,sprite)
         
       this.createText(page[i],i)
     }
@@ -68,7 +70,7 @@ export class MainGrid extends PixiGrid {
   createBg(){
     const sprite=new PIXI.Sprite.from('bg')
     this.setChild('bg',sprite)
-    
+    // console.warn(this);
     const style = new PIXI.TextStyle();
     style.fontFamily='Arial'
     style.fontSize = 43;
@@ -104,7 +106,7 @@ export class MainGrid extends PixiGrid {
     fromX = w / 2;
     fromY = h * 0.41;
     toX = w / 2;
-    toY = h * 0.75;
+    toY = h * 0.7;
   }
   const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
   tl.to(hand, { x: fromX, y: fromY, ease: Bounce, duration: 1, yoyo: true });
@@ -116,23 +118,25 @@ export class MainGrid extends PixiGrid {
  }
  
  onClick(sprite){
-  if (!this.smthisdoing) {
-    this.smthisdoing = true;
-    this.hand.alpha = 0;
-    const likePosition = this.likePosition(sprite);
-    let X = likePosition.x;
-    let Y = likePosition.y;
-    this.buildLike(X, Y);
+    if (!this.smthisdoing) {
+      this.smthisdoing = true;
+      this.hand.alpha = 0;
+      const likePosition = this.likePosition(sprite);
+      let X = likePosition.x;
+      let Y = likePosition.y;
+      this.buildLike(X, Y);
+    }
   }
- }
 
 likePosition(sprite){
   const w=window.innerWidth
   const h=window.innerHeight
   let X, Y;
-const page=pages[0]//pages[i]
-if (w> h) {
- if(page[1].name==='table1'){
+// const page=pages[0]//pages[i]
+if ( w > h) {
+ if(sprite.name==='table1'){
+  // console.warn(sprite);
+
       X = w * 0.25;
       Y = h * 0.5;
     } else {
@@ -140,22 +144,63 @@ if (w> h) {
       Y = h * 0.5;
     }
   } else {
-    if (page[1].name==='table1') {
-      X = w / 2;
-      Y = h * 0.27;
-    } else {
+    if (sprite.name==='table1') {
       X = w / 2;
       Y = h * 0.41;
+    } else {
+      X = w / 2;
+      Y = h * 0.74;
     }
   }
   return { x:X,y:Y}
 }
 
 buildLike(X, Y){
-  const like = PIXI.Sprite.from('like');
+    const like = PIXI.Sprite.from('like');
     like.anchor.set(0.5);
     like.position.set(X, Y);
-    // this.likeAnimation(like);
+    this.likeAnimation(like);
     this.addChild(like);
+  } 
+
+likeAnimation(like){
+  const tl = gsap.timeline({ repeatDelay: 1 });
+  tl.to(like, { pixi: { scaleX: 0.5 , scaleY: 0.5}, duration: 0.5 });
+  let promise =new Promise(function(resolve){})
+  tl.to(like, {
+    pixi: { scaleX: 1, scaleY: 1 },
+    duration: 0.5,
+    onComplete: () => {
+      this.removeChild(like)
+      if(this.pagesCount<pages.length){
+        this.deletePage(pages[this.pagesCount])
+        this.pagesCount++
+        if(pages[this.pagesCount]){
+          this.goToNextPage(pages[this.pagesCount])
+        }
+      }
+       if (this.pagesCount === pages.length){
+        this.goToLastPage()
+      }
+    },
+  });
 }
+
+deletePage(page){
+  // console.warn(this.children.length);
+  for(let i=0;i<page.length;i++){
+    this.removeChildren(0,9)
+    // console.warn(this);
+  }
+}
+
+goToNextPage(page){
+  this._createPage(page)
+  this.smthisdoing=false;
+}
+
+goToLastPage(){
+console.warn('aaaaaaa');
+}
+
 }
