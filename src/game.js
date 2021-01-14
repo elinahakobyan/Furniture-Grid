@@ -1,9 +1,14 @@
 import * as PIXI from 'pixi.js';
 import { MainGrid } from './grid/main-grid';
 import { LastPageGrid } from './grid/last-page-grid';
-
+import EventEmitter from 'eventemitter3'
 // import { gsap, Bounce } from 'gsap';
 // import { PixiPlugin } from 'gsap/PixiPlugin';
+const emitter = new EventEmitter()
+
+export function getEmiter() {
+  return emitter;
+}
 
 export class Game extends PIXI.Application {
   constructor() {
@@ -18,6 +23,8 @@ export class Game extends PIXI.Application {
     // gsap.registerPlugin(PixiPlugin);
     // PixiPlugin.registerPIXI(PIXI);
     this._loadAssets();
+    const emmiter = getEmiter()
+    emmiter.on("retry", this.retry, this)
   }
 
   _resize() {
@@ -42,14 +49,25 @@ export class Game extends PIXI.Application {
       .add('table1k', 'assets/furniture/table1k.png')
       .add('font', 'assets/font/kenvector_future.ttf')
       .add('bg', 'assets/ui/nkar.png')
-      .add('red', 'assets/ui/button.png')
-      .add('blue', 'assets/ui/bluebutton.png');
+      .add('redButton', 'assets/ui/redButton.png')
+      .add('blueButton', 'assets/ui/blueButton.png');
     this.loader.load(() => {
-      this._build();
+      this._onLoadComplete()
     });
+  }
+  _onLoadComplete() {
+    this._build()
   }
 
   _build() {
     this.stage.addChild((this._mainView = new MainGrid()));
+  }
+
+  retry() {
+    console.warn(this);
+    this.stage.destroy({ children: true })
+    this.stage = new PIXI.Container()
+    this._onLoadComplete()
+    this._resize()
   }
 }

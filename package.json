@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@armathai/pixi-grid": "^3.0.5",
+    "eventemitter3": "^3.1.2",
     "gsap": "^3.5.1",
     "pixi.js": "^5.3.3"
   }

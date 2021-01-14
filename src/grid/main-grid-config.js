@@ -38,11 +38,11 @@ export function mainGridConfig() {
         },
         {
           name: 'header2',
-          bounds: { x: 0.68, y: 0.75, width: 0.18, height: 0.04 }
+          bounds: { x: 0.657, y: 0.75, width: 0.18, height: 0.05 }
         },
         {
           name: 'description2',
-          bounds: { x: 0.68, y: 0.81, width: 0.18, height: 0.04 }
+          bounds: { x: 0.657, y: 0.81, width: 0.18, height: 0.04 }
         },
         {
           name: 'bg',
@@ -89,15 +89,15 @@ export function mainGridConfig() {
         },
         {
           name: 'table2',
-          bounds: { x: 0, y: 0.62, width: 1, height: 0.2 }
+          bounds: { x: 0, y: 0.65, width: 1, height: 0.2 }
         },
         {
           name: 'header2',
-          bounds: { x: 0, y: 0.83, width: 1, height: 0.04 }
+          bounds: { x: 0, y: 0.86, width: 1, height: 0.04 }
         },
         {
           name: 'description2',
-          bounds: { x: 0, y: 0.87, width: 1, height: 0.03 }
+          bounds: { x: 0, y: 0.9, width: 1, height: 0.03 }
         },
         {
           name: 'bg',

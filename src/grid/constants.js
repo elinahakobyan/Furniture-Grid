@@ -20,12 +20,12 @@ export const pages = [
             name: 'logo',
         },
         {
-            name: 'chair3',
+            name: 'chair4',
             header: 'DWR',
             description: 'Reid Ottoman'
         },
         {
-            name: 'chair4',
+            name: 'chair3',
             header: 'DWR ',
             description: 'Womb Ottoman'
         }
@@ -65,5 +65,11 @@ export const lastPage = [
     },
     {
         name: 'd4'
+    },
+    {
+        name: 'redButton'
+    },
+    {
+        name: 'blueButton'
     }
 ]
