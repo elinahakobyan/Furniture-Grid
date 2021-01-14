@@ -9,9 +9,9 @@ export function LP(l, p) {
 export function lastPageGridConfig() {
     return LP(
         {
-            // debug: {
-            //     color: 0xff0000,
-            // },
+            debug: {
+                color: 0xff0000,
+            },
             name: 'main',
             bounds: { x: 0, y: 0, width: window.innerWidth, height: window.innerHeight },
             cells: [
@@ -40,7 +40,7 @@ export function lastPageGridConfig() {
                 {
                     name: 'd3',
                     bounds: { x: 0.703, y: 0.525, width: 0.5, height: 0.28 },
-                    align: CellAlign.leftBottom
+                    align: CellAlign.leftTop
 
                 },
                 {
@@ -98,7 +98,7 @@ export function lastPageGridConfig() {
                 {
                     name: 'd4',
                     bounds: { x: 0.55, y: 0.57, width: 0.75, height: 0.23 },
-                    align: CellAlign.leftTop
+                    align: CellAlign.leftBottom
 
                 },
                 {

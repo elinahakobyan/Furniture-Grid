@@ -76,7 +76,7 @@ export function mainGridConfig() {
           // debug: {
           //   color: 0x000000,
           // },
-          name: 'table1',
+          name: 'table1 ',
           bounds: { x: 0, y: 0.34, width: 1, height: 0.2 }
         },
         {
