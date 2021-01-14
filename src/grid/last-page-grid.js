@@ -1,7 +1,7 @@
 import { CellAlign, CellScale, PixiGrid } from '@armathai/pixi-grid';
 import { lastPageGridConfig } from './last-page-grid-config';
 import { lastPage } from './constants'
-import { Sofa } from './Sofa'
+import { Sofa } from '../Sofa'
 import { gsap, Bounce } from 'gsap';
 import { PixiPlugin } from 'gsap/PixiPlugin';
 import { getEmiter } from '../game';
